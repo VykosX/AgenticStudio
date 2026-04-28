@@ -1,0 +1,13 @@
+{
+  "lastResultText": "0.9598882929497148",
+  "definitions": [
+    {
+      "key": "x",
+      "statement": "x = 4"
+    },
+    {
+      "key": "y",
+      "statement": "y = 4"
+    }
+  ]
+}

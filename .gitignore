@@ -1,0 +1,4 @@
+.lmstudio
+node_modules
+dependencies/*/node_modules
+dependencies/*/.runtime-home

@@ -1,0 +1,1 @@
+rm -rf /, dd if=/dev/zero, sudo, su, pkexec, doas, nmap, nc, ssh, apt install, pacman -S, yum install, dnf install, kill -9, pkill -9, killall -9, mkfs, fdisk, parted, dd if=/dev/zero of=, export, source /etc/profile, . ~/.bashrc, shutdown, reboot, poweroff, crontab -e, at, ifconfig, ip addr, iptables

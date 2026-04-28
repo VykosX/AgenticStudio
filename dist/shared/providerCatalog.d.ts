@@ -1,0 +1,31 @@
+import type { Tool } from "@lmstudio/sdk";
+import { z } from "zod";
+import { detectEnabledPluginsFromLmStudioState } from "./providerState";
+import type { PluginInventoryEntry, ToolDocumentation, ToolProfile } from "./providerTypes";
+export declare function summarizeByPlugin(docs: ToolDocumentation[]): Array<Record<string, unknown>>;
+export declare function summarizeToolNamesByPlugin(docs: ToolDocumentation[]): Array<Record<string, unknown>>;
+export declare function compactToolRecord(doc: ToolDocumentation): Record<string, unknown>;
+export declare const writeToFileParameter: z.ZodDefault<z.ZodUnion<[z.ZodString, z.ZodBoolean]>>;
+export declare function standardToolRecord(doc: ToolDocumentation, includeExamples: boolean): Record<string, unknown>;
+export declare function basicToolRecord(doc: ToolDocumentation): Record<string, unknown>;
+export declare function zodSchemaToJson(value: any): unknown;
+export declare function runtimeToolSchema(registeredTools: Tool[], toolName: string): unknown;
+export declare function findMatchingTool(docs: ToolDocumentation[], queryTool: string): ToolDocumentation | null;
+export declare function normalizeQueryToolList(value: unknown): string[];
+export declare function findSimilarTools(docs: ToolDocumentation[], target: ToolDocumentation, maxItems?: number): ToolDocumentation[];
+export declare function inferToolCategory(name: string, description: string): string;
+export declare const TOOL_PROFILE_ORDER: ToolProfile[];
+export declare function getAllowedToolNamesForProfile(profile: ToolProfile, requestedToolNames?: string[]): Set<string> | null;
+export declare function listAgenticStudioToolMinimumProfiles(allowIndividualToolRequests?: boolean, aliasesEnabled?: boolean): Array<{
+    name: string;
+    minimumProfile: ToolProfile;
+    configNote?: string;
+}>;
+export declare function filterToolsByProfile(tools: Tool[], profile: ToolProfile, requestedToolNames?: string[]): Tool[];
+export declare function buildToolDocumentation(name: string, description: string, pluginId: string, availability: ToolDocumentation["availability"], availabilityReason?: string, allowIndividualToolRequests?: boolean): ToolDocumentation;
+export declare function discoverToolDocumentation(scope: "own" | "enabled" | "disabled" | "all", enabledPluginIds: string[], mode?: "live_only" | "all_installed", registeredOwnTools?: Tool[], currentProfile?: ToolProfile, requestedProfile?: ToolProfile, currentRequestedToolNames?: string[], allowIndividualToolRequests?: boolean): Promise<ToolDocumentation[]>;
+export declare function discoverPluginInventory(docs: ToolDocumentation[], enabledPluginIds: string[]): Promise<PluginInventoryEntry[]>;
+export declare function filterDisabledOnly(docs: ToolDocumentation[], enabledPluginIds: string[]): ToolDocumentation[];
+export declare function recommendToolsForGoal(goal: string, docs: ToolDocumentation[]): ToolDocumentation[];
+export { detectEnabledPluginsFromLmStudioState };
+//# sourceMappingURL=providerCatalog.d.ts.map

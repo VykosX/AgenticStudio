@@ -1,0 +1,51 @@
+import type { ToolsProviderController } from "@lmstudio/sdk";
+import type { CavemanMode, ConversationStorageContext, ToolProfile } from "./providerTypes";
+export declare function getWorkspaceRoot(ctl: ToolsProviderController): string;
+export declare function normalizeToolProfile(value: unknown): ToolProfile;
+export declare function getDefaultToolProfile(ctl: ToolsProviderController): ToolProfile;
+export declare function getPluginsRootDirectory(): string;
+export declare function lmStudioRootDirectory(): string;
+export declare function pluginDataDirectory(): string;
+export declare function misplacedPluginDataDirectory(): string;
+export declare function legacyPluginStateDirectory(): string;
+export declare function toolProfileStatePath(): string;
+export declare function requestedToolsStatePath(): string;
+export declare function promptInventoryStatePath(): string;
+export declare function cavemanStatePath(): string;
+export declare function lmStudioInternalDirectory(): string;
+export declare function migrateMisplacedPluginDataDirectory(): Promise<void>;
+export declare function getCurrentConversationIdFromLmStudioState(): Promise<string | null>;
+export declare function buildToolProfileScopeKey(conversationId: string | null): string | null;
+export declare function writeStoredToolProfile(profile: ToolProfile, conversationId: string | null): Promise<void>;
+export declare function getCurrentToolProfile(ctl: ToolsProviderController): Promise<ToolProfile>;
+export declare function writeStoredRequestedTools(toolNames: string[], conversationId: string | null): Promise<void>;
+export declare function getCurrentRequestedTools(): Promise<string[]>;
+export declare function hasSeenPromptInventory(conversationId: string | null): Promise<boolean>;
+export declare function markPromptInventorySeen(conversationId: string | null): Promise<void>;
+export declare function getLastPromptCavemanProfile(conversationId: string | null): Promise<CavemanMode | null>;
+export declare function writeLastPromptCavemanProfile(conversationId: string | null, mode: CavemanMode): Promise<void>;
+type CavemanStateRecord = {
+    modeOverride: CavemanMode | null;
+    skipNextTool: boolean;
+    skipTurnStage: "idle" | "pending" | "active";
+    updatedAt: string;
+};
+export declare function getCurrentCavemanState(): Promise<CavemanStateRecord>;
+export declare function writeCurrentCavemanState(patch: Partial<Pick<CavemanStateRecord, "modeOverride" | "skipNextTool" | "skipTurnStage">>): Promise<CavemanStateRecord>;
+export declare function memoryFilePathFromDirectory(baseDirectory: string): string;
+export declare function todoFilePathFromDirectory(baseDirectory: string): string;
+export declare function buildConversationStorageContextFromId(conversationId: string | null): ConversationStorageContext;
+export declare function getConversationStorageContext(_root: string): Promise<ConversationStorageContext>;
+export declare function resolveMemoryPaths(root: string, global: boolean): Promise<{
+    readPaths: string[];
+    writePaths: string[];
+    context: ConversationStorageContext;
+}>;
+export declare function resolveTodoPaths(root: string, global: boolean): Promise<{
+    readPaths: string[];
+    writePaths: string[];
+    context: ConversationStorageContext;
+}>;
+export declare function detectEnabledPluginsFromLmStudioState(): Promise<string[]>;
+export {};
+//# sourceMappingURL=providerState.d.ts.map

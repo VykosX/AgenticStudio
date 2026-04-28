@@ -1,0 +1,30 @@
+{
+  "name": "agentic-studio",
+  "version": "1.0.0",
+  "description": "A dedicated master agentic tool suite for LM Studio with file, web, desktop, automation, and development tools.",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "scripts": {
+    "validate:tool-context": "node scripts/validate-tool-context.cjs",
+    "tool-result-budgets": "node scripts/check-tool-result-budgets.cjs",
+    "smoke": "node scripts/smoke-checks.cjs && node scripts/check-tool-result-budgets.cjs",
+    "build": "npm run validate:tool-context && tsc -p tsconfig.json",
+    "verify": "npm run build && npm run smoke",
+    "dev": "lms dev",
+    "push": "lms push"
+  },
+  "author": "vykosx",
+  "license": "MIT",
+  "dependencies": {
+    "@lmstudio/sdk": "^1.3.0",
+    "mathjs": "^15.2.0",
+    "playwright": "^1.55.0",
+    "qbittorrent-api-v2": "^1.2.2",
+    "yaml": "2.8.3",
+    "zod": "3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.8",
+    "typescript": "^5.9.3"
+  }
+}
